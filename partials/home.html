@@ -1,0 +1,64 @@
+<div class="row">
+
+	<div class="large-3 columns">
+		Search:
+		<input  ng-model="searchKeyword" type="text" id ="test" placeholder="search term" />
+	</div>
+	<div class="large-3 columns">
+		<a ng-href="#/checkout">Checkout Bag: {{c.items.length}}</a>
+	</div>
+	
+</div>
+<div class="small-4 columns"><h4 style="text-align:right">Product</h4></div>
+<div class="small-4 columns"><h4 style="text-align:center">Information</h4></div>
+<div class="small-1 columns">sort by price:
+
+</div>
+<div class="small-1 columns">
+	<select ng-model="order">
+		<option value='+price'>low</option>
+		<option value='-price'>high</option>
+	</select>
+
+</div>
+<hr>
+
+<div style="border:1px dotted;" ng-repeat=" tea in t.teaList | orderBy: order | filter: searchKeyword" class="row">
+	<div class="small-3 columns"><img style="width:80%" ng-src="{{tea.imageUrl}}"></img>
+
+		
+
+
+	</div>
+	<div class="small-7 columns">
+		
+	</div>
+
+	<button ng-click="t.addBag(tea._id,c.items,quantity)"style= 'float:right'>Add to bag</button>
+	<div style="float:right" class="small-1 columns">
+		Quantity:  
+		<select ng-model="quantity">
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=7>7</option>
+			<option value=8>8</option>
+			<option value=9>9</option>
+		</select>
+	</div>
+	<ul>
+		<li >Name: {{tea.name}}</li>
+		<li>ingredients: {{tea.ingredients}}</li>
+		<li>caffeine: {{tea.caffeineScale}}</li>
+		<li>in stock: {{tea.inStock}}</li>
+		<li>rating: {{tea.rating}}</li>
+		<li>price: {{tea.price | currency}}</li>
+
+	</ul>
+
+	
+</div>
+</div>

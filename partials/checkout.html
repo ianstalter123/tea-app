@@ -1,0 +1,44 @@
+<div class="row">
+
+	<div class="large-8 columns">
+		<label for="test"><h4>My Shopping Bag</h4></label>
+
+	</div>
+	
+</div>
+<div class="row">
+	<div class="small-4 columns"><h4 style="text-align:center">Product</h4></div>
+	<div class="small-2 columns"><h4 style="text-align:center"></div>
+	<div class="small-2 columns"><h4 style="text-align:center">Quantity</h4></div>
+	<div class="small-4 columns"><h4 style="text-align:center">Order-total: {{t.total | currency}}</h4></div>	
+</div>
+
+<hr>
+
+<div style="border:1px dotted;" ng-repeat=" tea in c.items track by $index" class="row" style="text-align:center">
+	<div class="small-4 columns"><img style="width:100%" ng-src="{{tea[1].imageUrl}}"></img>
+	</div>
+	<div class="small-2 columns">
+	
+
+		<ul>
+
+		<li>Name: {{tea[1].name}}</li>
+		<li>ingredients: {{tea[1].ingredients}}</li>
+		<li>caffeine scale: {{tea[1].caffeineScale}}</li>
+			<li>price: {{tea[1].price | currency}}</li>
+		</ul>
+
+	</div>
+	<div style="text-align:center" class="small-2 columns">
+
+		
+		<input ng-model="tea[0]" ng-change="updateQ()" type="number">
+		
+
+
+	</div>
+	<div class="small-4 columns"><h4 style="text-align:center">{{tea[0] * tea[1].price  | currency}}</h4>
+		<button ng-click="removeItem(tea[1]._id)" style="float:right">Remove from cart</button>
+	</div>
+</div>
